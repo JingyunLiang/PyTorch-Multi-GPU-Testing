@@ -45,7 +45,7 @@ def multi_gpu_testing_wrapper(model, input, index, gpu_id=None, available_gpu_nu
     lock.acquire()
     if gpu_id is None:
         for i in range(available_gpu_num):
-            if used_gpu_list[i] < max_process_per_gpu:
+            if used_gpu_list[i] < max_process_per_gpu and used_gpu_list[i] == min(used_gpu_list):
                 gpu_id = i
                 break
 
